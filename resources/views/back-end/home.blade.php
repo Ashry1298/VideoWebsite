@@ -14,10 +14,7 @@
 
 
 @section('content')
-    @component('back-end.layout.header')
-        @slot('nav_title')
-            Home Page
-        @endslot
+    @component('back-end.layout.header',['nav_title'=>'Home Page'])
     @endcomponent
     {{-- <h1>Home Page </h1> --}}
 @endsection

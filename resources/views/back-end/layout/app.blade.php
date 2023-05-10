@@ -50,9 +50,9 @@
           @yield('content')
         </div>
       </div>
-    @include('back-end.layout.footer')
     </div>
   </div>
+  @include('back-end.layout.footer')
   <!--   Core JS Files   -->
   <script src="/assets/js/core/jquery.min.js"></script>
   <script src="/assets/js/core/popper.min.js"></script>
