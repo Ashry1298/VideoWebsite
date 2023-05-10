@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\BackEnd\CategoryController;
 use App\Http\Controllers\BackEnd\HomeController;
+use App\Http\Controllers\BackEnd\SkillController;
 use App\Http\Controllers\BackEnd\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +33,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/', [HomeController::class, 'index'])->name('dashboard');
         Route::resource('users', UserController::class)->except(['show']);
+        Route::resource('categories', CategoryController::class)->except(['show']);
+        Route::resource('skills', SkillController::class)->except(['show']);
         // Route::get('users/delete/{id}', [UserController::class, 'delete'])->name('users.delete');
 
     });

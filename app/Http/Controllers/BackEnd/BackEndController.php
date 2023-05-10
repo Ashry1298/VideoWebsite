@@ -31,7 +31,7 @@ class BackEndController extends Controller
         $pageDesciption = 'Here You Can Create ' . $this->getModelName();
         $pluralModelName = $this->getClassNameFromModel();
         $routeName=$pluralModelName;
-        return view('back-end.' . $this->getClassNameFromModel() . '.create', compact('PageTitle', 'pageDesciption','routeName'));
+        return view('back-end.' . $this->getClassNameFromModel() . '.create', compact('PageTitle', 'pageDesciption','pluralModelName','routeName'));
     }
 
     public function edit($id)
@@ -41,7 +41,7 @@ class BackEndController extends Controller
         $pluralModelName = $this->getClassNameFromModel();
         $routeName=$pluralModelName;
         $row = $this->model::findorfail($id);
-        return view('back-end.' . $this->getClassNameFromModel() . '.edit', compact('row', 'PageTitle', 'pageDesciption', 'routeName'));
+        return view('back-end.' . $this->getClassNameFromModel() . '.edit', compact('row','pluralModelName' ,'PageTitle', 'pageDesciption', 'routeName'));
     }
     public function getClassNameFromModel()
     {
