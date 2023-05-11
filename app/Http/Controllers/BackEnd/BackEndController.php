@@ -19,9 +19,9 @@ class BackEndController extends Controller
         $ModelName = $this->getModelName();
         $PageTitle = $this->pluralModelName();
         $pluralModelName = $this->getClassNameFromModel();
-        $pageDesciption = 'Here You Can Add , Edit Or Delete  ' . $this->pluralModelName();
+        $pageDesciption = 'Here You Can Add , Edit Or Delete' . $this->pluralModelName();
         $rows = $this->model::paginate(10);
-        $routeName=$pluralModelName;
+        $routeName = $pluralModelName;
         return view('back-end.' . $this->getClassNameFromModel() . '.index', compact('rows', 'ModelName', 'PageTitle', 'pageDesciption', 'routeName'));
     }
 
@@ -30,8 +30,9 @@ class BackEndController extends Controller
         $PageTitle = 'Create ' . $this->getModelName();
         $pageDesciption = 'Here You Can Create ' . $this->getModelName();
         $pluralModelName = $this->getClassNameFromModel();
-        $routeName=$pluralModelName;
-        return view('back-end.' . $this->getClassNameFromModel() . '.create', compact('PageTitle', 'pageDesciption','pluralModelName','routeName'));
+        $routeName = $pluralModelName;
+        $append = $this->append();
+        return view('back-end.' . $this->getClassNameFromModel() . '.create', compact('PageTitle', 'pageDesciption', 'pluralModelName', 'routeName', 'append'))->with($append);
     }
 
     public function edit($id)
@@ -39,9 +40,10 @@ class BackEndController extends Controller
         $PageTitle = 'Edit ' . $this->getModelName();
         $pageDesciption = 'Here You Can Edit ' . $this->getModelName();
         $pluralModelName = $this->getClassNameFromModel();
-        $routeName=$pluralModelName;
+        $routeName = $pluralModelName;
         $row = $this->model::findorfail($id);
-        return view('back-end.' . $this->getClassNameFromModel() . '.edit', compact('row','pluralModelName' ,'PageTitle', 'pageDesciption', 'routeName'));
+        $append = $this->append();
+        return view('back-end.' . $this->getClassNameFromModel() . '.edit', compact('row', 'pluralModelName', 'PageTitle', 'pageDesciption', 'routeName',))->with($append);
     }
     public function getClassNameFromModel()
     {
@@ -60,5 +62,10 @@ class BackEndController extends Controller
     {
         $this->model::findorfail($id)->delete();
         return back();
+    }
+
+    protected function append()
+    {
+        return [];
     }
 }
