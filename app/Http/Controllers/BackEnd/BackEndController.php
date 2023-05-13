@@ -22,6 +22,7 @@ class BackEndController extends Controller
         $pageDesciption = 'Here You Can Add , Edit Or Delete' . $this->pluralModelName();
         $rows = $this->model::paginate(10);
         $routeName = $pluralModelName;
+        $url = 'https://www.youtube.com/watch?v=bULHYPjbdZU&list=PLYp_Kd32XvcqW5GIocnA-M3DKUK6_7aDa&index=28';
         return view('back-end.' . $this->getClassNameFromModel() . '.index', compact('rows', 'ModelName', 'PageTitle', 'pageDesciption', 'routeName'));
     }
 

@@ -1,4 +1,4 @@
-<form action="{{ route($routeName . '.update', $row->id) }}" method="POST">
+<form action="{{ route($routeName . '.update', $row->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PATCH')
     <div class="row">
@@ -72,16 +72,7 @@
                 <x-input-error :messages="$errors->get($input)" class="mt-2" />
             </div>
         </div>
-        <div class="col-md-6">
-            @php
-                $input = 'image';
-            @endphp
-            <div class="form-group bmd-form-group">
-                <label for="select menu" class="bmd-label-floating">Video Image</label>
-                <input type="text" class="form-control" name="{{ $input }}" autocomplete="off">
-                <x-input-error :messages="$errors->get($input)" class="mt-2" />
-            </div>
-        </div>
+
         <div class="col-md-12">
             @php
                 $input = 'description';
@@ -127,7 +118,6 @@
         <div class="form-group bmd-form-group">
             <label for="select menu" class="bmd-label-floating">Video Tags</label>
             <select multiple name="{{ $input }}" class="form-control" id="select menu" style="height: 100px">
-                <option selected disabled value="">Choose</option>
                 @foreach ($tags as $tag)
                     <option value="{{ $tag->id }}" {{ in_array($tag->id, $selectedTags) ? 'selected' : '' }}>
                         {{ $tag->name }}</option>
@@ -135,6 +125,14 @@
             </select>
             <x-input-error :messages="$errors->get($input)" class="mt-2" />
         </div>
+    </div>
+    <div class="input-group mb-3">
+        @php
+            $input = 'image';
+        @endphp
+        <label class="input-group-text" for="inputGroupFile01">Upload</label>
+        <input type="file" class="form-control" id="inputGroupFile01" name="{{$input}}">
+        <x-input-error :messages="$errors->get($input)" class="mt-2" />
     </div>
 
     </div>
