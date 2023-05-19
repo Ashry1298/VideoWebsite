@@ -13,7 +13,7 @@
     </div>
     <div class="col-md-6">
         @php
-            $input = 'meta-keywords';
+            $input = 'meta_keywords';
         @endphp
         <div class="form-group bmd-form-group">
             <label class="bmd-label-floating">Meta_Keywords</label>
@@ -64,7 +64,7 @@
 
     <div class="col-md-5">
         @php
-            $input = 'meta-description';
+            $input = 'meta_description';
         @endphp
         <div class="form-group bmd-form-group">
             <label class="bmd-label-floating">Meta-Description </label>

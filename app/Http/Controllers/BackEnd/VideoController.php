@@ -3,19 +3,27 @@
 namespace App\Http\Controllers\BackEnd;
 
 
+use App\Models\Tag;
+use App\Models\Skill;
 use App\Models\Video;
+use App\Models\Comment;
+use App\Models\Category;
+use Illuminate\Support\Str;
+use Termwind\Components\Dd;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Filesystem\Filesystem;
+use App\Http\Controllers\BackEnd\CommentTrait;
 use App\Http\Controllers\BackEnd\BackEndController;
 use App\Http\Requests\BackEnd\Videos\StoreValidation;
-use App\Models\Category;
-use App\Models\Skill;
-use App\Models\Tag;
-use Illuminate\Support\Facades\Auth;
-use Termwind\Components\Dd;
-use Illuminate\Support\Str;
+use App\Http\Requests\BackEnd\Videos\UpdateValidation;
+use App\Http\Requests\BackEnd\Comments\Update;
+
 
 class VideoController extends BackEndController
 {
+    use CommentTrait;
     // public function __construct(User $model)
     // {
     //     parent::__construct($model);
@@ -39,6 +47,8 @@ class VideoController extends BackEndController
                 ->skills()->get()->pluck('id')->toArray();
             $arr['selectedTags'] = Video::find(request()->route()->parameter('video'))
                 ->tags()->get()->pluck('id')->toArray();
+            $arr['comments'] = Video::find(request()->route()->parameter('video'))
+                ->comments()->get();
         }
         return $arr;
     }
@@ -51,12 +61,12 @@ class VideoController extends BackEndController
         $this->sync($video, $data);
         return redirect()->route('videos.index');
     }
-    public function update(StoreValidation $request, Video $video)
+    public function update(UpdateValidation $request, Video $video)
     {
         $data = $request->validated();
         if ($request->file('image')) {
-            unlink(public_path('Upload/Images/' . $video->id . '/' . $video->image));
-            $data['image'] = $this->updateImage($request->file('image'), $video->name);
+            unlink(public_path('Upload/Images/' . $video->name . '/' . $video->image));
+            $data['image'] = $this->updateImage($request->file('image'), $data['name']);
             $video->update($data, ['user_id' => Auth::user()->id]);
         }
         $video->update($data, ['user_id' => Auth::user()->id]);
@@ -90,11 +100,11 @@ class VideoController extends BackEndController
     public function destroy($id)
     {
         $video = $this->model::findorfail($id);
-        if($video->image !=null)
-        {
-            unlink(public_path('Upload/Images/'.$video->name));
+        if ($video->image != null) {
+            File::deleteDirectory(public_path('Upload/Images/' . $video->name));
         }
         $video->delete();
         return back();
     }
+
 }

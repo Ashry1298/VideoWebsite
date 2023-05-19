@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\User;
 use App\Models\Skill;
+use App\Models\Comment;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,8 +15,8 @@ class Video extends Model
 
     protected $fillable=[
         'name',
-        'meta-keywords',
-        'meta-description',
+        'meta_keywords',
+        'meta_description',
         'description',
         'youtube',
         'published',
@@ -40,5 +41,14 @@ class Video extends Model
     public function tags()
     {
         return $this->belongsToMany('App\Models\Tag');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+    public function scopePublished()
+    {
+        return $this->where('published',1);
     }
 }

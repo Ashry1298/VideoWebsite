@@ -1,7 +1,7 @@
 <div class="sidebar" data-color="purple" data-background-color="black" data-image="./assets/img/sidebar-2.jpg">
     <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-            Creative Tim
+        <a href="{{route('frontend.home')}}" class="simple-text logo-normal">
+            Coding Website
         </a>
     </div>
     <div class="sidebar-wrapper">
@@ -46,6 +46,12 @@
                 <a class="nav-link" href="{{ route('videos.index') }}">
                     <i class="fas fa-heart"></i>
                     <p>Videos</p>
+                </a>
+            </li>
+            <li class="nav-item {{ is_active('messages') }}">
+                <a class="nav-link" href="{{ route('messages.index') }}">
+                    <i class="material-icons">cloud</i>
+                    <p>Messages</p>
                 </a>
             </li>
             <!-- your sidebar here -->

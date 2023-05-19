@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('meta-keywords',255);
-            $table->string('meta-description',255);
+            $table->string('meta_keywords',255);
+            $table->string('meta_description',255);
             $table->text('description');
             $table->timestamps();
         });

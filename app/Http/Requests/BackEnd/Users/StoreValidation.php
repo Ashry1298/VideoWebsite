@@ -25,6 +25,7 @@ class StoreValidation extends FormRequest
             'name' => 'required|string|min:3|max:255',
             'email' => 'required|email|min:3|max:255|unique:users',
             'password' => 'required|confirmed|string|min:7|max:255',
+            'group'=>'required|string',
         ];
     }
 }

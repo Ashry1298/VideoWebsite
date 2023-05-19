@@ -12,8 +12,8 @@ class Category extends Model
 
     protected $fillable = [
         'name',
-        'meta-keywords',
-        'meta-description'
+        'meta_keywords',
+        'meta_description'
     ];
     public function videos()
     {

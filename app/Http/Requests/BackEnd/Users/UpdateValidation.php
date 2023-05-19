@@ -25,6 +25,7 @@ class UpdateValidation extends FormRequest
         return [
             'name' => 'required|string|min:3|max:255',
             'email' => 'required|email|min:3|unique:users,email,'.$this->user,
+            'group'=>'required|string',
         ];
     }
 }

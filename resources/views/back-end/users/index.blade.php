@@ -26,6 +26,7 @@
                         <th> ID </th>
                         <th> Name</th>
                         <th> Email </th>
+                        <th> Group</th>
                         <th class="text-right"> Processing </th>
                     </tr>
                 </thead>
@@ -35,6 +36,7 @@
                             <td> {{ $x + 1 }} </td>
                             <td>{{ $row->name }}</td>
                             <td>{{ $row->email }}</td>
+                            <td>{{ $row->group }}</td>
                             <td class="td-actions text-right">
                                 @include('back-end.shared.buttons.edit', ['routeName' => $routeName])
                                 @include('back-end.shared.buttons.delete', ['routeName' => $routeName])

@@ -23,8 +23,8 @@ class StoreValidation extends FormRequest
     {
         return [
             'name' => 'required|string|min:3|max:255',
-            'meta-keywords' => 'max:255',
-            'meta-description' => 'max:255',
+            'meta_keywords' => 'max:255',
+            'meta_description' => 'max:255',
         ];
     }
 }

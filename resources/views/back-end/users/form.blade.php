@@ -23,6 +23,18 @@
         </div>
     </div>
     <div class="col-md-6">
+        @php $input = "group"; @endphp
+        <div class="form-group bmd-form-group">
+            <label class="bmd-label-floating">User group</label>
+            <select name="{{ $input }}" class="form-control">
+                <option disabled selected>Choose group</option>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+            </select>
+            <x-input-error :messages="$errors->get($input)" class="mt-2" />
+        </div>
+    </div>
+    <div class="col-md-6">
         @php
             $input = 'password';
         @endphp

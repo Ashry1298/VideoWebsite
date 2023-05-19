@@ -15,7 +15,7 @@
         </div>
         <div class="col-md-6">
             @php
-                $input = 'meta-keywords';
+                $input = 'meta_keywords';
             @endphp
             <div class="form-group bmd-form-group">
                 <label class="bmd-label-floating">Meta_Keywords</label>
@@ -79,18 +79,18 @@
             @endphp
             <div class="form-group bmd-form-group">
                 <label class="bmd-label-floating">Description</label>
-                <textarea name="{{ $input }}" cols="30" rows="5" class="form-control"></textarea>
+                <textarea name="{{ $input }}" cols="30" rows="5" class="form-control">{{$row->$input}}</textarea>
                 <x-input-error :messages="$errors->get($input)" class="mt-2" />
             </div>
         </div>
 
         <div class="col-md-5">
             @php
-                $input = 'meta-description';
+                $input = 'meta_description';
             @endphp
             <div class="form-group bmd-form-group">
                 <label class="bmd-label-floating">Meta-Description </label>
-                <textarea name="{{ $input }}" cols="30" rows="5" class="form-control"></textarea>
+                <textarea name="{{ $input }}" cols="30" rows="5" class="form-control">{{$row->$input}}</textarea>
                 <x-input-error :messages="$errors->get($input)" class="mt-2" />
             </div>
         </div>

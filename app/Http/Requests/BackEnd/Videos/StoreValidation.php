@@ -23,16 +23,15 @@ class StoreValidation extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'meta-keywords' => 'max:255',
-            'meta-description' => 'max:255',
+            'meta_keywords' => 'max:255',
+            'meta_description' => 'max:255',
             'description' => 'required|min:10',
             'youtube' => 'required|min:10|url',
             'published' => 'required',
             'category_id' => 'required|integer',
-            'image' => 'file',
+            // 'image' => 'required|image|mimes:jpg,jpeg,png',
             'skills' => 'required',
             'tags' => 'required',
-
         ];
     }
 }
