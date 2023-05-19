@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\BackEnd;
 
 
@@ -6,6 +7,7 @@ use App\Models\Page;
 use Illuminate\Http\Request;
 use App\Http\Controllers\BackEnd\BackEndController;
 use App\Http\Requests\BackEnd\Pages\StoreValidation;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PageController extends BackEndController
 {
@@ -19,16 +21,18 @@ class PageController extends BackEndController
     }
     public function store(StoreValidation $request)
     {
-   
+
         $data = $request->all();
         Page::create($data);
+        Alert::success('Success!', 'Page Added Successfully');
         return redirect()->route('pages.index');
     }
     public function update(StoreValidation $request, $id)
-    {   
-        $category = Page::findorfail($id);
+    {
+        $page = Page::findorfail($id);
         $data = $request->validated();
-        $category->update($data);
+        $page->update($data);
+        Alert::success('Success!', 'Page Updated Successfully');
         return redirect()->route('pages.index');
     }
 }

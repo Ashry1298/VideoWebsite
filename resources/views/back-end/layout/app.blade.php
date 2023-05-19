@@ -214,6 +214,7 @@
       });
     });
   </script>
+@include('sweetalert::alert')
   @stack('js')
 </body>
 

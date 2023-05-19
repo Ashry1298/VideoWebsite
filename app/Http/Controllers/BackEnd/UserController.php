@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\BackEnd\BackEndController;
 use App\Http\Requests\BackEnd\Users\StoreValidation;
 use App\Http\Requests\BackEnd\Users\UpdateValidation;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends BackEndController
 {
@@ -24,6 +25,8 @@ class UserController extends BackEndController
         $data = $request->validated();
         $data['password'] = Hash::make($request->password);
         User::create($data);
+        Alert::success('Success!', 'User Added Successfully');
+
         return redirect()->route('users.index');
     }
     public function update(UpdateValidation $request, $id)
@@ -36,6 +39,7 @@ class UserController extends BackEndController
             unset($data['password']);
         }
         $user->update($data);
+        Alert::success('Success!', 'User Updated Successfully');
         return redirect()->route('users.index');
     }
 }

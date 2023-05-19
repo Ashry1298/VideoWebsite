@@ -9,7 +9,8 @@
     {{ $video->meta_keywords }}
 @endsection
 @section('content')
-    <div class="section section-buttons">
+  
+        <div class="section section-buttons">
         <div class="container">
             <div class="title">
                 <h1> {{ $video->name }}</h1>
@@ -34,4 +35,6 @@
 
                 </div>
             </div>
+        </div></div>
+      
         @endsection

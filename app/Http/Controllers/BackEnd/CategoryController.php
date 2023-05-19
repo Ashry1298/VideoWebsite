@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\BackEnd\BackEndController;
 use App\Http\Requests\BackEnd\Categories\StoreValidation;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoryController extends BackEndController
 {
@@ -23,6 +24,7 @@ class CategoryController extends BackEndController
 
         $data = $request->all();
         Category::create($data);
+        Alert::success('Success!', 'Category Added Successfully');
         return redirect()->route('categories.index');
     }
     public function update(StoreValidation $request, $id)
@@ -30,6 +32,7 @@ class CategoryController extends BackEndController
         $category = Category::findorfail($id);
         $data = $request->validated();
         $category->update($data);
+        Alert::success('Success!', 'Category Updated Successfully');
         return redirect()->route('categories.index');
     }
 }

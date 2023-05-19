@@ -5,6 +5,7 @@ namespace App\Http\Controllers\BackEnd;
 use App\Http\Controllers\BackEnd\BackEndController;
 use App\Http\Requests\BackEnd\Tags\StoreValidation;
 use App\Models\Tag;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class TagController extends BackEndController
 {
@@ -20,6 +21,7 @@ class TagController extends BackEndController
     {
         $data = $request->all();
         Tag::create($data);
+        Alert::success('Success!', 'Tag Added Successfully');
         return redirect()->route('tags.index');
     }
     public function update(StoreValidation $request, $id)
@@ -27,6 +29,7 @@ class TagController extends BackEndController
         $category = Tag::findorfail($id);
         $data = $request->validated();
         $category->update($data);
+        Alert::success('Success!', 'Tag Updated Successfully');
         return redirect()->route('tags.index');
     }
 }

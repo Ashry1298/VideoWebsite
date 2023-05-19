@@ -5,6 +5,7 @@ namespace App\Http\Controllers\BackEnd;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Model;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BackEndController extends Controller
 {

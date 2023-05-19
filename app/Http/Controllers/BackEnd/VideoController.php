@@ -19,6 +19,7 @@ use App\Http\Controllers\BackEnd\BackEndController;
 use App\Http\Requests\BackEnd\Videos\StoreValidation;
 use App\Http\Requests\BackEnd\Videos\UpdateValidation;
 use App\Http\Requests\BackEnd\Comments\Update;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class VideoController extends BackEndController
@@ -59,6 +60,7 @@ class VideoController extends BackEndController
         $data['image'] = $image;
         $video = Video::create($data + ['user_id' => Auth::user()->id]);
         $this->sync($video, $data);
+        Alert::success('Success!', 'Video Added Successfully');
         return redirect()->route('videos.index');
     }
     public function update(UpdateValidation $request, Video $video)
@@ -71,6 +73,7 @@ class VideoController extends BackEndController
         }
         $video->update($data, ['user_id' => Auth::user()->id]);
         $this->sync($video, $data);
+        Alert::success('Success!', 'Video Updated Successfully');
         return redirect()->route('videos.index');
     }
     protected function sync($row, $data)
