@@ -37,7 +37,7 @@ class CategoryController extends BackEndController
         $category = Category::findorfail($id);
         $data = $request->validated();
         $category->update($data);
-        return response()->json($this->handleCrudResponse($category, 'Successfully Updated'));
+        return response()->json($this->handleCrudResponse($category, 'Category Successfully Updated'));
     }
 
     public function show($id)

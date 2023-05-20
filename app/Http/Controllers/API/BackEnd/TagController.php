@@ -29,13 +29,20 @@ class TagController extends BackEndController
     {
         $data = $request->all();
         Tag::create($data);
-        return redirect()->route('tags.index');
+        return response()->json($this->handleCrudResponse($data, 'New Tag Added Successfully'));
     }
     public function update(StoreValidation $request, $id)
     {
-        $category = Tag::findorfail($id);
+        $tag = Tag::findorfail($id);
         $data = $request->validated();
-        $category->update($data);
-        return redirect()->route('tags.index');
+        $tag->update($data);
+        return response()->json($this->handleCrudResponse($tag, 'Tag Successfully Updated'));
+    }
+
+    public function show($id)
+    {
+        $tag = Tag::findorfail($id);
+        $tag=new TagResource($tag);
+        return response()->json($this->handleCrudResponse($tag, 'Success'));
     }
 }

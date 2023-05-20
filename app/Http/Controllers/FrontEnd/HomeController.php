@@ -18,6 +18,7 @@ use App\Http\Requests\FrontEnd\Users\UpdateValidation;
 use App\Http\Requests\BackEnd\Messages\StoreValidation;
 use App\Http\Requests\FrontEnd\Comments\StoreValidation as CommentStoreValidation;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class HomeController extends Controller
 {
@@ -91,7 +92,7 @@ class HomeController extends Controller
     {
 
         Message::create($request->validated());
-
+        Alert::success('Success!', 'Thanks for sending your message ,we will contact you soon ');
         return redirect()->route('frontend.landing');
     }
 

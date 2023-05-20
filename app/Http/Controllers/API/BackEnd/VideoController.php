@@ -60,7 +60,7 @@ class VideoController extends BackEndController
         $data['image'] = $image;
         $video = Video::create($data + ['user_id' => Auth::user()->id]);
         $this->sync($video, $data);
-        return redirect()->route('videos.index');
+        return response()->json($this->handleCrudResponse($data, 'New Video Added Successfully'));
     }
     public function update(UpdateValidation $request, Video $video)
     {
@@ -72,7 +72,7 @@ class VideoController extends BackEndController
         }
         $video->update($data, ['user_id' => Auth::user()->id]);
         $this->sync($video, $data);
-        return redirect()->route('videos.index');
+        return response()->json($this->handleCrudResponse($data, ' Video Updated Successfully'));
     }
     protected function sync($row, $data)
     {

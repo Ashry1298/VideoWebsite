@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\API\BackEnd;
 
 
@@ -21,22 +22,28 @@ class PageController extends BackEndController
 
     public function getRows()
     {
-     $rows = $this->model::paginate(5);
-     $rows= PageResource::collection($rows);
-     return $rows;
+        $rows = $this->model::paginate(5);
+        $rows = PageResource::collection($rows);
+        return $rows;
     }
     public function store(StoreValidation $request)
     {
-   
         $data = $request->all();
         Page::create($data);
-        return redirect()->route('pages.index');
+        return response()->json($this->handleCrudResponse($data, 'New Page Added Successfully'));
     }
+
     public function update(StoreValidation $request, $id)
-    {   
-        $category = Page::findorfail($id);
+    {
+        $page = Page::findorfail($id);
         $data = $request->validated();
-        $category->update($data);
-        return redirect()->route('pages.index');
+        $page->update($data);
+        return response()->json($this->handleCrudResponse($page, 'Page Successfully Updated'));
+    }
+    public function show($id)
+    {
+        $page = Page::findorfail($id);
+        $page = new PageResource($page);
+        return response()->json($this->handleCrudResponse($page, 'Success'));
     }
 }

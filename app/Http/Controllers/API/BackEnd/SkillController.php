@@ -30,13 +30,20 @@ class SkillController extends BackEndController
     {
         $data = $request->all();
         Skill::create($data);
-        return redirect()->route('skills.index');
+        return response()->json($this->handleCrudResponse($data, 'New Skill Added Successfully'));
     }
     public function update(StoreValidation $request, $id)
     {
-        $category = Skill::findorfail($id);
+        $skill = Skill::findorfail($id);
         $data = $request->validated();
-        $category->update($data);
-        return redirect()->route('skills.index');
+        $skill->update($data);
+        return response()->json($this->handleCrudResponse($skill, 'Skill Successfully Updated'));
+    }
+
+    public function show($id)
+    {
+        $skill = Skill::findorfail($id);
+        $skill=new SkillsResource($skill);
+        return response()->json($this->handleCrudResponse($skill, 'Success'));
     }
 }

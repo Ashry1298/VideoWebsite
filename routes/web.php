@@ -53,7 +53,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('comments', [VideoController::class, 'commentStore'])->name('comments.store');
         Route::get('comments/delete/{id}', [VideoController::class, 'deleteComment'])->name('comments.delete');
         Route::post('comments/updates/{id}', [VideoController::class, 'updateComment'])->name('comments.update');
-        Route::post('comments/update/{id}', [FrontEndHomeController::class, 'updateComment'])->name('front.commentsUpdate');
+        Route::post('comments/update/{comment}', [FrontEndHomeController::class, 'updateComment'])->name('front.commentsUpdate');
         Route::post('comments/store', [FrontEndHomeController::class, 'storeComment'])->name('front.commentsStore');
         Route::post('messages/reply', [MessageController::class, 'reply'])->name('message.reply');
     });
