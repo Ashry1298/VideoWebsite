@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\BackEnd;
+namespace App\Http\Controllers\UI\BackEnd;
 
-use App\Http\Controllers\BackEnd\BackEndController;
+use App\Http\Controllers\UI\BackEnd\BackEndController;
 use App\Http\Requests\BackEnd\Tags\StoreValidation;
 use App\Models\Tag;
 use RealRashid\SweetAlert\Facades\Alert;

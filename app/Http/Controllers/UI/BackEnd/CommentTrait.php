@@ -1,7 +1,5 @@
 <?php
-
-namespace App\Http\Controllers\BackEnd;
-
+namespace App\Http\Controllers\UI\BackEnd;
 use App\Http\Requests\BackEnd\Comments\Store;
 use App\Http\Requests\BackEnd\Comments\Update;
 use App\Models\Comment;

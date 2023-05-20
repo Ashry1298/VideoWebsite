@@ -1,6 +1,5 @@
 <?php
-
-namespace App\Http\Controllers\BackEnd;
+namespace App\Http\Controllers\UI\BackEnd;
 
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;

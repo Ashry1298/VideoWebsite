@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\BackEnd;
+namespace App\Http\Controllers\UI\BackEnd;
 
 
 use App\Models\Tag;
@@ -14,12 +14,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Filesystem\Filesystem;
-use App\Http\Controllers\BackEnd\CommentTrait;
-use App\Http\Controllers\BackEnd\BackEndController;
-use App\Http\Requests\BackEnd\Videos\StoreValidation;
-use App\Http\Requests\BackEnd\Videos\UpdateValidation;
-use App\Http\Requests\BackEnd\Comments\Update;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Http\Requests\BackEnd\Comments\Update;
+use App\Http\Controllers\UI\BackEnd\CommentTrait;
+use App\Http\Requests\BackEnd\Videos\StoreValidation;
+use App\Http\Controllers\UI\BackEnd\BackEndController;
+use App\Http\Requests\BackEnd\Videos\UpdateValidation;
 
 
 class VideoController extends BackEndController

@@ -9,7 +9,9 @@ use App\Http\Controllers\API\BackEnd\PageController;
 use App\Http\Controllers\API\BackEnd\UserController;
 use App\Http\Controllers\API\BackEnd\SkillController;
 use App\Http\Controllers\API\BackEnd\VideoController;
+use App\Http\Controllers\API\BackEnd\MessageController;
 use App\Http\Controllers\API\BackEnd\CategoryController;
+use App\Http\Controllers\API\BackEnd\BackEndHomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,14 +27,24 @@ use App\Http\Controllers\API\BackEnd\CategoryController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
-    Route::apiResource('/videos', VideoController::class);
-    Route::apiResource('/categories', CategoryController::class);
-    Route::apiResource('/skills', SkillController::class);
-    Route::apiResource('/tags', TagController::class);
-    Route::apiResource('/pages', PageController::class);
-    // Route::apiResource('/users', UserController::class);
+    Route::prefix('admin')->group(function () {
+        Route::get('/home', [BackEndHomeController::class, 'index']);
+        Route::apiResource('/videos', VideoController::class);
+        Route::apiResource('/categories', CategoryController::class);
+        Route::apiResource('/skills', SkillController::class);
+        
+        Route::apiResource('/tags', TagController::class);
+        Route::apiResource('/pages', PageController::class);
+        // Route::apiResource('/users', UserController::class);
+        Route::apiResource('messages', MessageController::class)->only(['index','destroy','show']);
+        Route::post('message/reply/{id}', [MessageController::class, 'reply']);
+        Route::post('comments', [VideoController::class, 'commentStore']);
+        Route::post('comments/updates/{id}', [VideoController::class,'updateComment']);
+        Route::delete('comments/delete/{id}', [VideoController::class, 'deleteComment']);
+    });
 });
 
 Route::post('/login', [AuthController::class, 'handleLogin']);

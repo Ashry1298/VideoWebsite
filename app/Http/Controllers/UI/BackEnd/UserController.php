@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\BackEnd;
+namespace App\Http\Controllers\UI\BackEnd;
 
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Controllers\BackEnd\BackEndController;
+use App\Http\Controllers\UI\BackEnd\BackEndController;
 use App\Http\Requests\BackEnd\Users\StoreValidation;
 use App\Http\Requests\BackEnd\Users\UpdateValidation;
 use RealRashid\SweetAlert\Facades\Alert;

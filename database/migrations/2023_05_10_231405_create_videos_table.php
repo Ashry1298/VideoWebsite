@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('youtube');
             $table->string('image');
             $table->boolean('published')->default(1);
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('category_id')->constrained();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

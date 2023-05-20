@@ -1,7 +1,5 @@
 <?php
-
-namespace App\Http\Controllers\FrontEnd;
-
+namespace App\Http\Controllers\UI\FrontEnd;
 use App\Models\Tag;
 use App\Models\Page;
 use App\Models\User;

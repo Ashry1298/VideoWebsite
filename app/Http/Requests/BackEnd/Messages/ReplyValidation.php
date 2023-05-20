@@ -23,7 +23,6 @@ class ReplyValidation extends FormRequest
     {
         return [
             'reply' => 'required|string|min:5|max:500',
-            'id' => 'required|int',
         ];
     }
 }

@@ -19,6 +19,7 @@ use App\Models\Comment;
 
 class VideoController extends BackEndController
 {
+    use APiCommentTrait;
     // public function __construct(User $model)
     // {
     //     parent::__construct($model);
@@ -105,7 +106,8 @@ class VideoController extends BackEndController
             File::deleteDirectory(public_path('Upload/Images/'.$video->name));
         }
         $video->delete();
-        return back();
+        $message=$this->getModelName().' Deleted Successfully';
+        return response()->json($this->handleCrudResponse($message, ' Video Updated Successfully'));
     }
     public function show($id)
     {

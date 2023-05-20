@@ -28,7 +28,7 @@
                     <form action="{{route('comments.update',$comment->id)}}" method="post">
                         @csrf
                         <label class="bmd-label-floating">Edit Comment </label>
-                        <textarea name="comment" cols="30" rows="5" class="form-control"></textarea>
+                        <textarea name="comment" cols="30" rows="5" class="form-control">{{$comment->comment}}</textarea>
                         <x-input-error :messages="$errors->get('comment')" class="mt-2" />
                         <button type="submit" class="btn btn-primary pull-right">{{ 'Submit'}}</button>
     

@@ -33,13 +33,12 @@
         </div>
     </div>
     <div class="col-md-12">
-        <form action="{{route('message.reply')}}" method="post">
+        <form action="{{route('message.reply',$row->id)}}" method="post">
             @csrf
             @php $input = "reply"; @endphp
             <div class="col-md-12">
                 <div class="form-group bmd-form-group">
                     <label class="bmd-label-floating">Reply Message</label>
-                    <input type="hidden" name="id" value="{{$row->id}}">
                     <textarea name="{{ $input }}" cols="30" rows="5"
                         class="form-control @error($input) is-invalid @enderror"></textarea>
                     @error($input)

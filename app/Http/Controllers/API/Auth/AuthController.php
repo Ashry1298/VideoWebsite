@@ -20,6 +20,7 @@ class AuthController extends Controller
     {
         $data = $request->validated();
         $data['password'] = Hash::make($request->password);
+        $data['group']='user';
         $user = User::create($data);
         $message = 'You Have Registered Successfully';
         return response()->json(($this->handleRegisterResponse(new UserResource($user), $message)));

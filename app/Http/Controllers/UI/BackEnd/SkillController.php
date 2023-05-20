@@ -1,8 +1,8 @@
 <?php
-namespace App\Http\Controllers\BackEnd;
+namespace App\Http\Controllers\UI\BackEnd;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\BackEnd\BackEndController;
+use App\Http\Controllers\UI\BackEnd\BackEndController;
 use App\Http\Requests\BackEnd\Skills\StoreValidation;
 use App\Models\Skill;
 use RealRashid\SweetAlert\Facades\Alert;

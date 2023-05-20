@@ -51,8 +51,10 @@ class BackEndController extends Controller
     }
     public function destroy($id)
     {
-        $this->model::findorfail($id)->delete();
-        return back();
+        $modelFind=$this->model::findorfail($id)->delete();
+        $message=$this->getModelName().' deleted Suceessfully';
+       
+        return response()->json($this->handleCrudResponse($message, 'Success'));
     }
 
     protected function append()

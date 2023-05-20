@@ -1,13 +1,13 @@
 <?php
+namespace App\Http\Controllers\UI\BackEnd;
 
-namespace App\Http\Controllers\BackEnd;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Controllers\BackEnd\BackEndController;
-use App\Http\Requests\BackEnd\Categories\StoreValidation;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Http\Controllers\UI\BackEnd\BackEndController;
+use App\Http\Requests\BackEnd\Categories\StoreValidation;
 
 class CategoryController extends BackEndController
 {
